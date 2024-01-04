@@ -33,8 +33,8 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "org.lineageos.updater"
-        minSdk = 30
+        applicationId = "org.exthmui.updater"
+        minSdk = 31
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -86,6 +86,8 @@ android {
 dependencies {
     compileOnly(fileTree(mapOf("dir" to "../system_libs", "include" to listOf("*.jar"))))
 
+    implementation(project(":SettingsTheme"))
+    implementation(project(":ExthmCollapsingToolbarBaseActivity"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.cardview:cardview:1.0.0")
@@ -93,6 +95,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
     implementation("androidx.preference:preference:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.android.material:material:1.9.0-alpha01")
 }
 

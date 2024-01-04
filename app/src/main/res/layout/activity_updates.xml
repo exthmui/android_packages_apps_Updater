@@ -52,15 +52,23 @@
                 android:paddingStart="16dp"
                 app:layout_collapseMode="parallax">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/banner"
+                    android:id="@+id/header_banner"/>
+
                 <TextView
                     android:id="@+id/header_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/header_banner"
                     android:fontFamily="sans-serif-light"
-                    android:paddingBottom="16dp"
+                    android:paddingBottom="8dp"
                     android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="56sp"
-                    tools:text="LineageOS\n20"/>
+                    android:textSize="24sp"
+                    tools:text="exTHmUI 20"/>
 
                 <TextView
                     android:id="@+id/header_build_version"
@@ -81,10 +89,19 @@
                     tools:text="1970-01-01"/>
 
                 <TextView
-                    android:id="@+id/header_last_check"
+                    android:id="@+id/header_version_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/header_build_date"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="12sp"
+                    tools:text="exTHmUI 版本号：exTHmUI-13.0-Tenshi-marble"/>
+
+                <TextView
+                    android:id="@+id/header_last_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header_version_name"
                     android:layout_marginTop="8dp"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="12sp"

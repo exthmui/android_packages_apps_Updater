@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Updater"
-include(":app")
+include(":app", ":SettingsTheme", ":ExthmCollapsingToolbarBaseActivity")
