@@ -11,3 +11,4 @@
 .cxx
 *.jks
 local.properties
+platform.keystore
