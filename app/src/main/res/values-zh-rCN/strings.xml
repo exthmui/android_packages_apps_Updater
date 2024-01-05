@@ -68,7 +68,7 @@
     <string name="list_download_progress_newer">已下载 <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>，共 <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
     <string name="list_download_progress_eta_newer">已下载 <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>，共 <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
     <string name="list_verifying_update">正在验证更新</string>
-    <string name="list_no_updates">未找到更新。要手动检查更新，请使用刷新按钮。</string>
+    <string name="list_no_updates">未找到更新。要手动检查更新，请使用刷新按钮或者下拉以刷新。</string>
     <string name="action_download">下载</string>
     <string name="action_pause">暂停</string>
     <string name="action_resume">继续</string>

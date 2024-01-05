@@ -51,6 +51,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -82,6 +83,7 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
     private UpdatesListAdapter mAdapter;
 
     private View mRefreshIconView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RotateAnimation mRefreshAnimation;
 
     private boolean mIsTV;
@@ -185,6 +187,9 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
         TextView headerBuildDate = findViewById(R.id.header_build_date);
         headerBuildDate.setText(StringGenerator.getDateLocalizedUTC(this,
                 DateFormat.LONG, BuildInfoUtils.getBuildDateTimestamp()));
+
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(() -> downloadUpdatesList(true));
 
         if (!mIsTV) {
             // Switch between header title and appbar title minimizing overlaps
@@ -538,13 +543,15 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
 
     private void refreshAnimationStart() {
         if (!mIsTV) {
-            if (mRefreshIconView == null) {
+            if (mRefreshIconView == null || swipeRefreshLayout == null) {
                 mRefreshIconView = findViewById(R.id.menu_refresh);
+                swipeRefreshLayout = findViewById(R.id.swipe_refresh);
             }
-            if (mRefreshIconView != null) {
+            if (mRefreshIconView != null || swipeRefreshLayout != null) {
                 mRefreshAnimation.setRepeatCount(Animation.INFINITE);
                 mRefreshIconView.startAnimation(mRefreshAnimation);
                 mRefreshIconView.setEnabled(false);
+                swipeRefreshLayout.setRefreshing(true);
             }
         } else {
             findViewById(R.id.recycler_view).setVisibility(View.GONE);
@@ -555,9 +562,10 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
 
     private void refreshAnimationStop() {
         if (!mIsTV) {
-            if (mRefreshIconView != null) {
+            if (mRefreshIconView != null || swipeRefreshLayout != null) {
                 mRefreshAnimation.setRepeatCount(0);
                 mRefreshIconView.setEnabled(true);
+                swipeRefreshLayout.setRefreshing(false);
             }
         } else {
             findViewById(R.id.refresh_progress).setVisibility(View.GONE);
