@@ -180,9 +180,7 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
                 getString(R.string.header_android_version, Build.VERSION.RELEASE));
 
         TextView headerVersionText = findViewById(R.id.header_version_name);
-        headerVersionText.setText(
-                getString(R.string.header_version_text, BuildInfoUtils.getVersionText())
-        );
+        headerVersionText.setText(BuildInfoUtils.getVersionText());
 
         TextView headerBuildDate = findViewById(R.id.header_build_date);
         headerBuildDate.setText(StringGenerator.getDateLocalizedUTC(this,

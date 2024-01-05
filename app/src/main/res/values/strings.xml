@@ -79,7 +79,6 @@
 
     <string name="header_title_text">exTHmUI %1$s</string>
     <string name="header_android_version">Android <xliff:g id="version" example="7.1.2">%1$s</xliff:g></string>
-    <string name="header_version_text">exTHmUI Version : <xliff:g id="version" example="exTHmUI-13.0-Tenshi">%1$s</xliff:g></string>
     <string name="header_last_updates_check">Last checked: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
 
     <string name="list_build_version">exTHmUI <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
