@@ -34,6 +34,7 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -574,10 +575,10 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
     private void showPreferencesDialog() {
         View view = LayoutInflater.from(this).inflate(R.layout.preferences_dialog, null);
         Spinner autoCheckInterval = view.findViewById(R.id.preferences_auto_updates_check_interval);
-        SwitchCompat autoDelete = view.findViewById(R.id.preferences_auto_delete_updates);
-        SwitchCompat meteredNetworkWarning = view.findViewById(
+        Switch autoDelete = view.findViewById(R.id.preferences_auto_delete_updates);
+        Switch meteredNetworkWarning = view.findViewById(
                 R.id.preferences_metered_network_warning);
-        SwitchCompat abPerfMode = view.findViewById(R.id.preferences_ab_perf_mode);
+        Switch abPerfMode = view.findViewById(R.id.preferences_ab_perf_mode);
 
         if (!Utils.isABDevice()) {
             abPerfMode.setVisibility(View.GONE);
