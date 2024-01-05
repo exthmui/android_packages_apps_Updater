@@ -41,7 +41,7 @@ class ABUpdateInstaller {
     private final Context mContext;
     private String mDownloadId;
 
-    private UpdateEngine mUpdateEngine;
+    private final UpdateEngine mUpdateEngine;
     private boolean mBound;
 
     private boolean mFinalizing;
@@ -128,13 +128,7 @@ class ABUpdateInstaller {
     private ABUpdateInstaller(Context context, UpdaterController updaterController) {
         mUpdaterController = updaterController;
         mContext = context.getApplicationContext();
-        try {
-            mUpdateEngine = new UpdateEngine();
-        } catch (Exception e) {
-            Log.e(TAG, "Maybe this device not support UpdateEnging or not build it.");
-            e.printStackTrace();
-            mUpdateEngine = null;
-        }
+        mUpdateEngine = new UpdateEngine();
     }
 
     static synchronized ABUpdateInstaller getInstance(Context context,
@@ -204,7 +198,7 @@ class ABUpdateInstaller {
 
         boolean enableABPerfMode = PreferenceManager.getDefaultSharedPreferences(mContext)
                 .getBoolean(Constants.PREF_AB_PERF_MODE, false);
-        //mUpdateEngine.setPerformanceMode(enableABPerfMode);
+        mUpdateEngine.setPerformanceMode(enableABPerfMode);
 
         String zipFileUri = "file://" + file.getAbsolutePath();
         mUpdateEngine.applyPayload(zipFileUri, offset, 0, headerKeyValuePairs);
@@ -269,7 +263,7 @@ class ABUpdateInstaller {
     }
 
     public void setPerformanceMode(boolean enable) {
-        //mUpdateEngine.setPerformanceMode(enable);
+        mUpdateEngine.setPerformanceMode(enable);
     }
 
     public void suspend() {
