@@ -543,16 +543,8 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
 
     private void refreshAnimationStart() {
         if (!mIsTV) {
-            if (mRefreshIconView == null || swipeRefreshLayout == null) {
-                mRefreshIconView = findViewById(R.id.menu_refresh);
-                swipeRefreshLayout = findViewById(R.id.swipe_refresh);
-            }
-            if (mRefreshIconView != null || swipeRefreshLayout != null) {
-                mRefreshAnimation.setRepeatCount(Animation.INFINITE);
-                mRefreshIconView.startAnimation(mRefreshAnimation);
-                mRefreshIconView.setEnabled(false);
-                swipeRefreshLayout.setRefreshing(true);
-            }
+            swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+            swipeRefreshLayout.setRefreshing(true);
         } else {
             findViewById(R.id.recycler_view).setVisibility(View.GONE);
             findViewById(R.id.no_new_updates_view).setVisibility(View.GONE);
@@ -562,11 +554,7 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
 
     private void refreshAnimationStop() {
         if (!mIsTV) {
-            if (mRefreshIconView != null || swipeRefreshLayout != null) {
-                mRefreshAnimation.setRepeatCount(0);
-                mRefreshIconView.setEnabled(true);
-                swipeRefreshLayout.setRefreshing(false);
-            }
+            swipeRefreshLayout.setRefreshing(false);
         } else {
             findViewById(R.id.refresh_progress).setVisibility(View.GONE);
             if (mAdapter.getItemCount() > 0) {
